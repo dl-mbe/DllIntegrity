@@ -63,7 +63,7 @@ function Get-HashList {
     if (-not (Test-Path $Root)) {
         throw "Pfad nicht gefunden: $Root"
     }
-    $files = Get-ChildItem -Path $Root -Filter *.dll -File -ErrorAction Stop -Recurse:$Recurse
+    $files = Get-ChildItem -Path $Root -Include *.dll,*.exe -File -ErrorAction Stop -Recurse:$Recurse
 
     $list = foreach ($f in $files) {
         $h = Get-FileHash -Path $f.FullName -Algorithm SHA256
@@ -125,7 +125,7 @@ function Get-FileSignatureInfo {
 
 function Get-CustomerInventory {
     param([Parameter(Mandatory=$true)][string]$CustomerDir, [bool]$Recurse=$true)
-    $files = Get-ChildItem -Path $CustomerDir -Filter *.dll -File -Recurse:$Recurse
+    $files = Get-ChildItem -Path $CustomerDir -Include *.dll,*.exe -File -Recurse:$Recurse
     foreach ($f in $files) {
         $ver = (Get-Item $f.FullName).VersionInfo
         [PSCustomObject]@{
