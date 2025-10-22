@@ -23,7 +23,7 @@
     Durchsucht Unterordner rekursiv (Standard: $true).
 
 .PARAMETER MatchBy
-    "Name" (Standard) vergleicht Dateien anhand des Dateinamens.
+    "Name" (Standard) vergleicht Dateien anhand des Dateinamens. 
     "RelativePath" vergleicht anhand des relativen Pfads (setzt gleiche Struktur voraus).
 
 .EXAMPLE
